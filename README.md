@@ -20,3 +20,9 @@ $ yarn run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+## Chrome
+- タブを全て消してから入力
+```
+$ open http://localhost:3000/ -a "/Applications/Google Chrome.app" --args --disable-web-security --user-data-dir
+```
