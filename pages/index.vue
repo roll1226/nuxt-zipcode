@@ -6,7 +6,7 @@
         v-model="zipcode"
         type="text"
         placeholder="郵便番号を入力"
-        @keyup="searchAddressInfo"
+        @input="search"
     /></label>
 
     <!-- <br /> -->
@@ -29,36 +29,20 @@
 </template>
 
 <script>
-const axios = require('axios')
-
-// api
-const url = 'http://zipcloud.ibsnet.co.jp/api/search?zipcode='
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
     return {
-      zipcode: '',
-      msg: '',
-      addressData: {}
+      zipcode: ''
     }
   },
+  computed: {
+    ...mapGetters(['msg', 'addressData'])
+  },
   methods: {
-    searchAddressInfo() {
-      axios.get(url + this.zipcode).then(res => {
-        // 入力エラー
-        if (res.data.results == null) {
-          this.addressData = ''
-          this.msg = 'そのような住所ないよ'
-        } else {
-          // ある場合
-          this.addressData = res.data.results[0]
-          this.msg = ''
-        }
-        if (this.zipcode === '') {
-          this.addressData = ''
-          this.msg = ''
-        }
-      })
+    search(event) {
+      this.$store.dispatch('serchApi', this.zipcode)
     }
   }
 }
