@@ -15,13 +15,7 @@
     <p v-if="zipcode === ''">
       入力してね
     </p>
-    <p v-else-if="msg == ''">
-      住所：<ruby
-        >{{ addressData['address1'] }}<rt>{{ addressData['kana1'] }}</rt
-        >{{ addressData['address2'] }}<rt>{{ addressData['kana2'] }}</rt
-        >{{ addressData['address3'] }}<rt>{{ addressData['kana3'] }}</rt></ruby
-      >
-    </p>
+    <p v-else-if="msg == ''">住所 ： {{ addressData['fullAddress'] }}</p>
     <p v-else id="error">
       {{ msg }}
     </p>
@@ -41,7 +35,7 @@ export default {
     ...mapGetters(['msg', 'addressData'])
   },
   methods: {
-    search(event) {
+    search() {
       this.$store.dispatch('serchApi', this.zipcode)
     }
   }

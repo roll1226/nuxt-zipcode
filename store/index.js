@@ -1,6 +1,6 @@
 import Vuex from 'vuex'
 import axios from 'axios'
-const url = 'http://zipcloud.ibsnet.co.jp/api/search?zipcode='
+const url = 'https://api.zipaddress.net/?zipcode='
 
 const store = () => {
   return new Vuex.Store({
@@ -14,7 +14,7 @@ const store = () => {
         state.msg = 'そのような住所ないよ'
       },
       ok(state, payload) {
-        state.addressData = payload.json.data.results[0]
+        state.addressData = payload.json.data.data
         state.msg = ''
       }
     },
@@ -30,12 +30,14 @@ const store = () => {
       serchApi({ commit }, payload) {
         // api
         axios.get(url + payload).then(json => {
-          // 入力エラー
-          if (json.data.results == null) {
-            commit('error')
-          } else {
+          if (json.data.code === 200) {
             // ある場合
-            commit('ok', { json })
+            commit('ok', {
+              json
+            })
+          } else {
+            // 入力エラー
+            commit('error')
           }
         })
       }

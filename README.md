@@ -21,8 +21,7 @@ $ yarn run generate
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
 
-## Chrome
-- タブを全て消してから入力
-```
-$ open http://localhost:3000/ -a "/Applications/Google Chrome.app" --args --disable-web-security --user-data-dir
-```
+## API
+[郵便番号-住所検索API](https://zipaddress.net/)
+- 別のAPIを使用
+  - カタカナがないので漢字のみで表示 
