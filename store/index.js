@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-const axios = require('axios')
+import axios from 'axios'
 const url = 'http://zipcloud.ibsnet.co.jp/api/search?zipcode='
 
 const store = () => {
