@@ -6,7 +6,7 @@
         v-model="zipcode"
         type="text"
         placeholder="郵便番号を入力"
-        @input="search"
+        @change="search"
     /></label>
 
     <!-- <br /> -->
