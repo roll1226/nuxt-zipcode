@@ -1,8 +1,15 @@
 import pkg from './package'
-
+const routerBase =
+  process.env.DEPLOY_ENV === 'GH_PAGES'
+    ? {
+        router: {
+          base: '/nuxt-zipcode/'
+        }
+      }
+    : {}
 export default {
   mode: 'universal',
-
+  ...routerBase,
   /*
    ** Headers of the page
    */
