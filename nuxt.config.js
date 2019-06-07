@@ -32,7 +32,12 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    {
+      src: '~plugins/swipe.js',
+      ssr: false
+    }
+  ],
 
   /*
    ** Nuxt.js modules
