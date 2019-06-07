@@ -18,7 +18,8 @@
     "cross-env": "^5.2.0",
     "node-cron": "^2.0.3",
     "nuxt": "^2.4.0",
-    "vue-swipe": "^2.4.0"
+    "vue-swipe": "^2.4.0",
+    "vue2-touch-events": "^2.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
