@@ -34,7 +34,7 @@ export default {
    */
   plugins: [
     {
-      src: '~plugins/swipe.js',
+      src: '@plugins/swipe',
       ssr: false
     }
   ],
