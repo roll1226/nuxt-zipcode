@@ -1,59 +1,88 @@
 <template>
-  <section class="container">
-    <nuxt-link to="/swipe">あ</nuxt-link>
-    <label
-      >住所検索
-      <input
-        v-model="zipcode"
-        type="text"
-        placeholder="郵便番号を入力"
-        @change="search"
-    /></label>
-
-    <!-- <br /> -->
-    <!-- <button @click="searchAddressInfo">住所自動入力</button> -->
-    <br />
-    <p v-if="zipcode === ''">
-      入力してね
-    </p>
-    <p v-else-if="msg == ''">住所 ： {{ addressData['fullAddress'] }}</p>
-    <p v-else id="error">
-      {{ msg }}
-    </p>
-  </section>
+  <div>
+    <div v-touch:swipe.right="navHandler" class="swipe"></div>
+    <div
+      class="navwrap"
+      :class="{ navtrue: navOption1, navfales: navOption2 }"
+    ></div>
+    <div
+      v-touch:tap="maskHandler"
+      v-touch:swipe.left="maskHandler"
+      class="mask"
+      :class="{ masktrue: navOption1 }"
+    ></div>
+  </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   data() {
     return {
-      zipcode: ''
+      navOption1: false,
+      navOption2: false
     }
   },
-  computed: {
-    ...mapGetters(['msg', 'addressData'])
-  },
   methods: {
-    search() {
-      this.$store.dispatch('serchApi', this.zipcode)
+    navHandler: function() {
+      this.navOption1 = true
+      this.navOption2 = false
+    },
+    maskHandler: function() {
+      this.navOption1 = false
+      this.navOption2 = true
     }
   }
 }
 </script>
 
 <style>
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+.swipe {
+  width: 20%;
+  height: 100vh;
+  position: absolute;
+  z-index: 3;
+}
+
+.navwrap {
+  position: fixed;
+  z-index: 2;
+  background: #fff;
+  width: 0;
   height: 100vh;
 }
-#error {
-  color: red;
-  font-weight: bold;
+
+.masktrue {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  background: #000;
+}
+
+@keyframes trueNav {
+  from {
+    width: 0;
+  }
+  to {
+    width: 35%;
+  }
+}
+
+@keyframes falesNav {
+  from {
+    width: 35%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.navtrue {
+  animation: trueNav 250ms ease-in 0s forwards;
+}
+
+.navfales {
+  animation: falesNav 250ms ease-in 0s forwards;
 }
 </style>
