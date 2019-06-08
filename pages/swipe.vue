@@ -37,7 +37,7 @@ export default {
 
 <style>
 .swipe {
-  width: 35%;
+  width: 40%;
   height: 100vh;
   position: absolute;
   z-index: 3;
