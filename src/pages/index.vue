@@ -1,6 +1,7 @@
 <template>
   <section class="container">
-    <nuxt-link to="/swipe">あ</nuxt-link>
+    <nuxt-link to="/swipe">swioe</nuxt-link>
+    <nuxt-link to="/anke">anke</nuxt-link>
     <label
       >住所検索
       <input

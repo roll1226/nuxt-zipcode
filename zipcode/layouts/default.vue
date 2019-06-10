@@ -4,16 +4,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  head() {
-    return {
-      titleTemplate: '%s | Vue & Nuxt Study'
-    }
-  }
-}
-</script>
-
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -25,7 +15,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  background: #eee;
 }
 
 *,

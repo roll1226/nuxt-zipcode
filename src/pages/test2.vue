@@ -1,5 +1,7 @@
 <template>
   <div>
+    <input v-model="test" type="text" />
+    <nuxt-link :to="{ path: test }">aaaaaaaaa</nuxt-link>
     <button @click="show = !show">
       Toggle
     </button>
@@ -13,7 +15,8 @@
 export default {
   data: function() {
     return {
-      show: true
+      show: true,
+      test: null
     }
   },
   head() {
